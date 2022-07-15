@@ -7,7 +7,6 @@ from sqlalchemy import Column, Integer, String, Text
 class LRB_NOTE(Base):
     # 表名称
     __tablename__ = 'lrb_note'
-
     id = Column(Integer, primary_key=True, autoincrement=True)
     note_id = Column(String(length=30), nullable=False)
     note_url = Column(String(length=150), nullable=False)
