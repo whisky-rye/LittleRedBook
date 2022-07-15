@@ -7,7 +7,6 @@ from sqlalchemy import Column, Integer, String
 class LRB_USER(Base):
     # 表名称
     __tablename__ = 'lrb_user'
-
     id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(String(length=40), nullable=False)
     nickname = Column(String(length=50), nullable=False)
