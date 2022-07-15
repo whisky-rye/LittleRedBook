@@ -55,7 +55,6 @@ def insert_db(data, table_name, write_index, primary_keys):
     # 插入默认的数据库。
     insert_other_db(MYSQL_DB, data, table_name, write_index, primary_keys)
 
-
 # 增加一个插入到其他数据库的方法。
 def insert_other_db(to_db, data, table_name, write_index, primary_keys):
     # 定义engine
@@ -80,7 +79,6 @@ def insert_other_db(to_db, data, table_name, write_index, primary_keys):
             except  Exception as e:
                 print("################## ADD PRIMARY KEY ERROR :", e)
 
-
 # 插入数据。
 def insert(sql, params=()):
     with conn() as db:
@@ -89,7 +87,6 @@ def insert(sql, params=()):
             db.execute(sql, params)
         except  Exception as e:
             print("error :", e)
-
 
 # 查询数据
 def select(sql, params=()):
@@ -117,7 +114,6 @@ def select_count(sql, params=()):
             return int(result[0][0])
         else:
             return 0
-
 
 # 通用函数。获得日期参数。
 def run_with_args(run_fun):
@@ -161,13 +157,11 @@ def run_with_args(run_fun):
     print("######################### finish %s , use time: %s #########################" % (
         tmp_datetime_str, time.time() - start))
 
-
 # 设置基础目录，每次加载使用。
 bash_stock_tmp = "/data/cache/hist_data_cache/%s/%s/"
 if not os.path.exists(bash_stock_tmp):
     os.makedirs(bash_stock_tmp)  # 创建多个文件夹结构。
     print("######################### init tmp dir #########################")
-
 
 # 获取当前标准时间格式
 def GetStandardTimeFormat(timestamp=time.time()):
