@@ -168,29 +168,24 @@ def write_note_in_table(note_url,user_id,board_id,browser,mySession):
 
     para = urllib.parse.urlparse(note_url)
     note_url = para.scheme+"://"+para.netloc+para.path
-
     browser.get(note_url)
-
     note_id = note_url.replace("https://www.xiaohongshu.com/discovery/item/", "")
     note_id = note_id.replace("http://www.xiaohongshu.com/discovery/item/", "")
 
     sleep(3)
     swipe_down(browser,2)
-
     # browser.get_screenshot_as_file('/home/spider/GoodsSpider-master/little_red_book/screenshot.png')
 
     try:
         WebDriverWait(browser, 15).until(lambda x: x.find_element_by_css_selector('h1.title'))
     except Exception as e:
         return False
-
     h1title = browser.find_element_by_css_selector('h1.title')
     print(h1title)
 
     note_html = browser.page_source
     # print(note_html)
     # WriteLogFile(note_html)
-
     # print(a_tags)
     # print(a_tags[0])
 
@@ -199,7 +194,6 @@ def write_note_in_table(note_url,user_id,board_id,browser,mySession):
     handleTagsToTable(a_tags,mySession)
 
     title = note_html_bs.select('h1.title')[0].get_text().strip('\n').strip('\r').strip('\b').strip() # 标题
-
     video_poster = video_src = images_lists = ''
     try:
         video = note_html_bs.select('.videoframe video')[0]
@@ -264,7 +258,6 @@ def write_note_in_table(note_url,user_id,board_id,browser,mySession):
     # 相关笔记列表
     note_str = note_html_bs.select('.panel-card .panel-list a')
     note_str = makeLinkNoteToStr(note_str)  # 相关标签列表
-
     # 评论列表
     comment_box = note_html_bs.select('.all-tip .content div.comment')
     comment_str = makeCommentToStr(comment_box)  # 相关标签列表
